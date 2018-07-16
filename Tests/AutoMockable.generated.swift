@@ -3,22 +3,23 @@
 
 @testable import MockGenerator
 
+// ======================== TestingPresenter ========================
+
 class TestingPresenterMock: TestingPresenter {
-  var niceVariablereturnValue: String!
+  var niceVariableReturnValue: String!
   var niceVariable: String {
-    get { return niceVariablereturnValue }
-    set(value) { niceVariablereturnValue = value }
+    get { return niceVariableReturnValue }
+    set(value) { niceVariableReturnValue = value }
   }
 
-  var niceVariable2returnValue: Int!
+  var niceVariable2ReturnValue: Int!
   var niceVariable2: Int {
-    get { return niceVariable2returnValue }
-    set(value) { niceVariable2returnValue = value }
+    get { return niceVariable2ReturnValue }
+    set(value) { niceVariable2ReturnValue = value }
   }
 
   // MARK: - emptyMethod
 
-  var emptyMethodClosure: (() -> Void)?
   var emptyMethodCallsCount = 0
   var emptyMethodWasCalled: Bool {
     return emptyMethodCallsCount > 0
@@ -26,12 +27,10 @@ class TestingPresenterMock: TestingPresenter {
 
   func emptyMethod() {
     emptyMethodCallsCount += 1
-    emptyMethodClosure?()
   }
 
   // MARK: - methodWithThrow
 
-  var methodWithThrowClosure: (() throws -> String)?
   var methodWithThrowThrowableError: Error?
   var methodWithThrowReturnValue: String!
   var methodWithThrowCallsCount = 0
@@ -44,12 +43,11 @@ class TestingPresenterMock: TestingPresenter {
       throw error
     }
     methodWithThrowCallsCount += 1
-    return try methodWithThrowClosure.map({ try $0() }) ?? methodWithThrowReturnValue
+    return methodWithThrowReturnValue
   }
 
   // MARK: - methodWithReturn
 
-  var methodWithReturnClosure: (() -> String)?
   var methodWithReturnReturnValue: String!
   var methodWithReturnCallsCount = 0
   var methodWithReturnWasCalled: Bool {
@@ -58,12 +56,11 @@ class TestingPresenterMock: TestingPresenter {
 
   func methodWithReturn() -> String {
     methodWithReturnCallsCount += 1
-    return methodWithReturnClosure.map({ $0() }) ?? methodWithReturnReturnValue
+    return methodWithReturnReturnValue
   }
 
   // MARK: - methodWithSingleParamReturn
 
-  var methodWithSingleParamReturnCrvshClosure: ((String) -> Void)?
   var methodWithSingleParamReturnCrvshReceivedCrvsh: String?
   var methodWithSingleParamReturnCrvshCallsCount = 0
   var methodWithSingleParamReturnCrvshWasCalled: Bool {
@@ -73,12 +70,10 @@ class TestingPresenterMock: TestingPresenter {
   func methodWithSingleParamReturn(crvsh: String) {
     methodWithSingleParamReturnCrvshCallsCount += 1
     methodWithSingleParamReturnCrvshReceivedCrvsh = crvsh
-    methodWithSingleParamReturnCrvshClosure?(crvsh)
   }
 
   // MARK: - methodWithMultipleParams
 
-  var methodWithMultipleParamsNameLastNameClosure: ((String, String) -> Void)?
   var methodWithMultipleParamsNameLastNameReceivedArguments: (name: String, lastName: String)?
   var methodWithMultipleParamsNameLastNameCallsCount = 0
   var methodWithMultipleParamsNameLastNameWasCalled: Bool {
@@ -88,12 +83,10 @@ class TestingPresenterMock: TestingPresenter {
   func methodWithMultipleParams(name: String, lastName: String) {
     methodWithMultipleParamsNameLastNameCallsCount += 1
     methodWithMultipleParamsNameLastNameReceivedArguments = (name: name, lastName: lastName)
-    methodWithMultipleParamsNameLastNameClosure?(name, lastName)
   }
 
   // MARK: - methodWithParamsAndReturn
 
-  var methodWithParamsAndReturnNameLastNameClosure: ((String, String) -> String)?
   var methodWithParamsAndReturnNameLastNameReceivedArguments: (name: String, lastName: String)?
   var methodWithParamsAndReturnNameLastNameReturnValue: String!
   var methodWithParamsAndReturnNameLastNameCallsCount = 0
@@ -104,6 +97,19 @@ class TestingPresenterMock: TestingPresenter {
   func methodWithParamsAndReturn(name: String, lastName: String) -> String {
     methodWithParamsAndReturnNameLastNameCallsCount += 1
     methodWithParamsAndReturnNameLastNameReceivedArguments = (name: name, lastName: lastName)
-    return methodWithParamsAndReturnNameLastNameClosure.map({ $0(name, lastName) }) ?? methodWithParamsAndReturnNameLastNameReturnValue
+    return methodWithParamsAndReturnNameLastNameReturnValue
+  }
+
+  // MARK: - methodWithScape
+
+  var methodWithScapeCompletionReceivedCompletion: ((Bool, Error?) -> Void)?
+  var methodWithScapeCompletionCallsCount = 0
+  var methodWithScapeCompletionWasCalled: Bool {
+    return methodWithScapeCompletionCallsCount > 0
+  }
+
+  func methodWithScape(completion: @escaping (Bool, Error?) -> Void) {
+    methodWithScapeCompletionCallsCount += 1
+    methodWithScapeCompletionReceivedCompletion = completion
   }
 }

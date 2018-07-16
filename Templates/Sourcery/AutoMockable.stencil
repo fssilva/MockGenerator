@@ -22,18 +22,9 @@ throw error
 {% endif %}
 {% endmacro %}
 
-{% macro methodClosureName method %}{% call swiftifyMethodName method.selectorName %}Closure{% endmacro %}
-
-{% macro methodClosureDeclaration method %}
-  var {% call methodClosureName method %}: (({% for param in method.parameters %}{{ param.typeName }}{% if not forloop.last %}, {% endif %}{% endfor %}) {% if method.throws %}throws {% endif %}-> {% if method.isInitializer %}Void{% else %}{{ method.returnTypeName }}{% endif %})?
-{% endmacro %}
-
-{% macro methodClosureCallParameters method %}{% for param in method.parameters %}{{ param.name }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endmacro %}
-
 {% macro mockMethod method %}
   //MARK: - {{ method.shortName }}
 
-  {% call methodClosureDeclaration method %}
   {% if method.throws %}
     {% call methodThrowableErrorDeclaration method %}
   {% endif %}
@@ -57,7 +48,6 @@ throw error
   {% if method.isInitializer %}
     required {{ method.name }} {
     {% call methodReceivedParameters method %}
-    {% call methodClosureName method %}?({% call methodClosureCallParameters method %})
     }
   {% else %}
     func {{ method.name }}{% if method.throws %} throws{% endif %}{% if not method.returnTypeName.isVoid %} -> {{ method.returnTypeName }}{% endif %} {
@@ -67,9 +57,8 @@ throw error
     {% call swiftifyMethodName method.selectorName %}CallsCount += 1
     {% call methodReceivedParameters method %}
     {% if method.returnTypeName.isVoid %}
-    {% if method.throws %}try {% endif %}{% call methodClosureName method %}?({% call methodClosureCallParameters method %})
     {% else %}
-    return {% if method.throws %}try {% endif %}{% call methodClosureName method %}.map({ {% if method.throws %}try {% endif %}$0({% call methodClosureCallParameters method %}) }) ?? {% call swiftifyMethodName method.selectorName %}ReturnValue
+    return {% call swiftifyMethodName method.selectorName %}ReturnValue
   {% endif %}
   }
 
@@ -92,10 +81,13 @@ throw error
   }
 {% endmacro %}
 
-{% macro underlyingMockedVariableName variable %}{{ variable.name }}returnValue{% endmacro %}
+{% macro underlyingMockedVariableName variable %}{{ variable.name }}ReturnValue{% endmacro %}
 {% macro mockedVariableName variable %}{{ variable.name }}{% endmacro %}
 
-{% for type in types.protocols where type.based.AutoMockable or type|annotated:"AutoMockable" %}{% if type.name != "AutoMockable" %}
+{% for type in types.protocols where type.based.AutoMockable or type|annotated:"MockableProtocol" %}{% if type.name != "MockableProtocol" %}
+  
+  // ======================== {{ type.name }} ========================
+
   class {{ type.name }}Mock: {{ type.name }} {
   {% for variable in type.allVariables|!definedInExtension %}
     {% if variable.isOptional %}

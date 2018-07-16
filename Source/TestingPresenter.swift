@@ -8,10 +8,10 @@
 
 import Foundation
 
-// sourcery: AutoMockable
+// sourcery: MockableProtocol
 protocol TestingPresenter {
   var niceVariable: String { get }
-  var niceVariable2: Int { get }
+  var niceVariable2: Int { get set }
 
   func emptyMethod()
   func methodWithThrow() throws -> String
@@ -19,4 +19,5 @@ protocol TestingPresenter {
   func methodWithSingleParamReturn(crvsh: String)
   func methodWithMultipleParams(name: String, lastName: String)
   func methodWithParamsAndReturn(name: String, lastName: String) -> String
+  func methodWithScape(completion: @escaping (Bool, Error?) -> Void)
 }
