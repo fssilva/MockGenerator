@@ -1,6 +1,8 @@
 // Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
+// swiftlint:disable all
+
 @testable import MockGenerator
 
 // ======================== TestingPresenter ========================
@@ -12,11 +14,7 @@ class TestingPresenterMock: TestingPresenter {
     set(value) { niceVariableReturnValue = value }
   }
 
-  var niceVariable2ReturnValue: Int!
-  var niceVariable2: Int {
-    get { return niceVariable2ReturnValue }
-    set(value) { niceVariable2ReturnValue = value }
-  }
+  var niceVariable2: Int?
 
   // MARK: - emptyMethod
 

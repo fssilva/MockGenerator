@@ -11,7 +11,7 @@ import Foundation
 // sourcery: MockableProtocol
 protocol TestingPresenter {
   var niceVariable: String { get }
-  var niceVariable2: Int { get set }
+  var niceVariable2: Int? { get set }
 
   func emptyMethod()
   func methodWithThrow() throws -> String
