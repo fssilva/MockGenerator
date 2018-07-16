@@ -1,0 +1,8 @@
+sources:	
+  - Source/		
+templates:	
+  - Templates/Sourcery	
+output:	
+  Tests/
+prune:
+  true
