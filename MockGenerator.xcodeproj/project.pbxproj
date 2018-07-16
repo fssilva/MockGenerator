@@ -297,7 +297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = " \"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/AutoMockable.generated.swift\"";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/AutoMockable.generated.swift\"";
 		};
 		950154A39E979F69F2D0DA02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

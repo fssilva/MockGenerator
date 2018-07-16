@@ -7,19 +7,19 @@
 {% endmacro %}
 
 {% macro methodThrowableErrorUsage method %}
-if let error = {% call swiftifyMethodName method.selectorName %}ThrowableError {
-throw error
-}
+  if let error = {% call swiftifyMethodName method.selectorName %}ThrowableError {
+  throw error
+  }
 {% endmacro %}
 
 {% macro methodReceivedParameters method %}
-{%if method.parameters.count == 1 %}
-{% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }} = {{ param.name }}{% endfor %}
-{% else %}
-{% if not method.parameters.count == 0 %}
-{% call swiftifyMethodName method.selectorName %}ReceivedArguments = ({% for param in method.parameters %}{{ param.name }}: {{ param.name }}{% if not forloop.last%}, {% endif %}{% endfor %})
-{% endif %}
-{% endif %}
+  {%if method.parameters.count == 1 %}
+    {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }} = {{ param.name }}{% endfor %}
+  {% else %}
+    {% if not method.parameters.count == 0 %}
+      {% call swiftifyMethodName method.selectorName %}ReceivedArguments.append( ({% for param in method.parameters %}{{ param.name }}: {{ param.name }}{% if not forloop.last%}, {% endif %}{% endfor %}))
+    {% endif %}
+  {% endif %}
 {% endmacro %}
 
 {% macro mockMethod method %}
@@ -31,11 +31,14 @@ throw error
   
   {% if method.parameters.count == 1 %}
     var {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }}: {% if param.isClosure %}({% endif %}{{ param.typeName.unwrappedTypeName }}{% if param.isClosure %}){% endif %}?{% endfor %}
-    {% else %}{% if not method.parameters.count == 0 %}
-    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: ({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})?
-    {% endif %}{% endif %}
-    {% if not method.returnTypeName.isVoid and not method.isInitializer %}
-    var {% call swiftifyMethodName method.selectorName %}ReturnValue: {{ method.returnTypeName }}{% if not method.isOptionalReturnType %}!{% endif %}
+  {% else %}
+    {% if not method.parameters.count == 0 %}
+      var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
+    {% endif %}
+  {% endif %}
+      
+  {% if not method.returnTypeName.isVoid and not method.isInitializer %}
+      var {% call swiftifyMethodName method.selectorName %}ReturnValue: {{ method.returnTypeName }}{% if not method.isOptionalReturnType %}!{% endif %}
   {% endif %}
   
   {% if not method.isInitializer %}
@@ -52,16 +55,16 @@ throw error
   {% else %}
     func {{ method.name }}{% if method.throws %} throws{% endif %}{% if not method.returnTypeName.isVoid %} -> {{ method.returnTypeName }}{% endif %} {
     {% if method.throws %}
-    {% call methodThrowableErrorUsage method %}
+      {% call methodThrowableErrorUsage method %}
     {% endif %}
+    
     {% call swiftifyMethodName method.selectorName %}CallsCount += 1
     {% call methodReceivedParameters method %}
-    {% if method.returnTypeName.isVoid %}
-    {% else %}
-    return {% call swiftifyMethodName method.selectorName %}ReturnValue
-  {% endif %}
-  }
-
+    
+    {% if not method.returnTypeName.isVoid %}
+      return {% call swiftifyMethodName method.selectorName %}ReturnValue
+    {% endif %}
+    }
   {% endif %}
 {% endmacro %}
 
@@ -84,7 +87,8 @@ throw error
 {% macro underlyingMockedVariableName variable %}{{ variable.name }}ReturnValue{% endmacro %}
 {% macro mockedVariableName variable %}{{ variable.name }}{% endmacro %}
 
-{% for type in types.protocols where type.based.AutoMockable or type|annotated:"MockableProtocol" %}{% if type.name != "MockableProtocol" %}
+{% for type in types.protocols where type.based.AutoMockable or type|annotated:"MockableProtocol" %}
+  {% if type.name != "MockableProtocol" %}
   
   // ======================== {{ type.name }} ========================
 

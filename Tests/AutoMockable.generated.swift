@@ -74,7 +74,7 @@ class TestingPresenterMock: TestingPresenter {
 
   // MARK: - methodWithMultipleParams
 
-  var methodWithMultipleParamsNameLastNameReceivedArguments: (name: String, lastName: String)?
+  var methodWithMultipleParamsNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
   var methodWithMultipleParamsNameLastNameCallsCount = 0
   var methodWithMultipleParamsNameLastNameWasCalled: Bool {
     return methodWithMultipleParamsNameLastNameCallsCount > 0
@@ -82,12 +82,12 @@ class TestingPresenterMock: TestingPresenter {
 
   func methodWithMultipleParams(name: String, lastName: String) {
     methodWithMultipleParamsNameLastNameCallsCount += 1
-    methodWithMultipleParamsNameLastNameReceivedArguments = (name: name, lastName: lastName)
+    methodWithMultipleParamsNameLastNameReceivedArguments.append((name: name, lastName: lastName))
   }
 
   // MARK: - methodWithParamsAndReturn
 
-  var methodWithParamsAndReturnNameLastNameReceivedArguments: (name: String, lastName: String)?
+  var methodWithParamsAndReturnNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
   var methodWithParamsAndReturnNameLastNameReturnValue: String!
   var methodWithParamsAndReturnNameLastNameCallsCount = 0
   var methodWithParamsAndReturnNameLastNameWasCalled: Bool {
@@ -96,7 +96,7 @@ class TestingPresenterMock: TestingPresenter {
 
   func methodWithParamsAndReturn(name: String, lastName: String) -> String {
     methodWithParamsAndReturnNameLastNameCallsCount += 1
-    methodWithParamsAndReturnNameLastNameReceivedArguments = (name: name, lastName: lastName)
+    methodWithParamsAndReturnNameLastNameReceivedArguments.append((name: name, lastName: lastName))
     return methodWithParamsAndReturnNameLastNameReturnValue
   }
 
