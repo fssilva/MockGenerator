@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08B3DB0C571527B4D062C16B /* Pods_MockGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4CA062C1B60757B54334D6 /* Pods_MockGeneratorTests.framework */; };
-		2FE39A16D2D97B34C1310F72 /* Pods_MockGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFD21B4774F291D05AE4CDB /* Pods_MockGenerator.framework */; };
+		055F99A478575AB63FC3DEFB /* Pods_MockGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */; };
+		58F6CDB998AB55A953A39D03 /* Pods_MockGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */; };
 		8B1999DD20F8D5BE00B2CFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999DC20F8D5BE00B2CFC0 /* AppDelegate.swift */; };
 		8B1999DF20F8D5BE00B2CFC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999DE20F8D5BE00B2CFC0 /* ViewController.swift */; };
 		8B1999E220F8D5BE00B2CFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E020F8D5BE00B2CFC0 /* Main.storyboard */; };
@@ -30,12 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12A4A062989BECE713963E75 /* Pods-MockGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.release.xcconfig"; sourceTree = "<group>"; };
-		17598A579BB2154ADF474F60 /* Pods-MockGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1E4CA062C1B60757B54334D6 /* Pods_MockGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BFD21B4774F291D05AE4CDB /* Pods_MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		53AB72B34B4B463075A88EB4 /* Pods-MockGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.debug.xcconfig"; sourceTree = "<group>"; };
-		5D20BF217F0321A93BF966FC /* Pods-MockGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		4B30BFD769E34B5D4005CA8F /* Pods-MockGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51067E913A7B50C6F404C3F3 /* Pods-MockGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		54878D54CF0FF279F1809511 /* Pods-MockGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1999D920F8D5BE00B2CFC0 /* MockGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1999DC20F8D5BE00B2CFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B1999DE20F8D5BE00B2CFC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		8B1999FE20F8D6EC00B2CFC0 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		8B199A0220F8D78C00B2CFC0 /* AutoMockable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoMockable.stencil; sourceTree = "<group>"; };
 		8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPresenter.swift; sourceTree = "<group>"; };
+		B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FE39A16D2D97B34C1310F72 /* Pods_MockGenerator.framework in Frameworks */,
+				055F99A478575AB63FC3DEFB /* Pods_MockGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,20 +64,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B3DB0C571527B4D062C16B /* Pods_MockGeneratorTests.framework in Frameworks */,
+				58F6CDB998AB55A953A39D03 /* Pods_MockGeneratorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29C8A81458001A7A1CB7EE62 /* Pods */ = {
+		049502B713EC79E772B2B56F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				53AB72B34B4B463075A88EB4 /* Pods-MockGenerator.debug.xcconfig */,
-				12A4A062989BECE713963E75 /* Pods-MockGenerator.release.xcconfig */,
-				17598A579BB2154ADF474F60 /* Pods-MockGeneratorTests.debug.xcconfig */,
-				5D20BF217F0321A93BF966FC /* Pods-MockGeneratorTests.release.xcconfig */,
+				EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */,
+				6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A21337BC0578A25170C0441 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */,
+				51067E913A7B50C6F404C3F3 /* Pods-MockGenerator.release.xcconfig */,
+				4B30BFD769E34B5D4005CA8F /* Pods-MockGeneratorTests.debug.xcconfig */,
+				54878D54CF0FF279F1809511 /* Pods-MockGeneratorTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -89,8 +98,8 @@
 				8B1999DB20F8D5BE00B2CFC0 /* Source */,
 				8B1999F020F8D5C000B2CFC0 /* Tests */,
 				8B1999DA20F8D5BE00B2CFC0 /* Products */,
-				29C8A81458001A7A1CB7EE62 /* Pods */,
-				FB96283725AE05C4B8297E46 /* Frameworks */,
+				6A21337BC0578A25170C0441 /* Pods */,
+				049502B713EC79E772B2B56F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,15 +152,6 @@
 			path = Sourcery;
 			sourceTree = "<group>";
 		};
-		FB96283725AE05C4B8297E46 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4BFD21B4774F291D05AE4CDB /* Pods_MockGenerator.framework */,
-				1E4CA062C1B60757B54334D6 /* Pods_MockGeneratorTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,7 +159,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B1999F620F8D5C000B2CFC0 /* Build configuration list for PBXNativeTarget "MockGenerator" */;
 			buildPhases = (
-				017071DE34DC8B9513990DDA /* [CP] Check Pods Manifest.lock */,
+				950154A39E979F69F2D0DA02 /* [CP] Check Pods Manifest.lock */,
 				8B1999D520F8D5BE00B2CFC0 /* Sources */,
 				8B1999D620F8D5BE00B2CFC0 /* Frameworks */,
 				8B1999D720F8D5BE00B2CFC0 /* Resources */,
@@ -179,7 +179,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B1999F920F8D5C000B2CFC0 /* Build configuration list for PBXNativeTarget "MockGeneratorTests" */;
 			buildPhases = (
-				03619C29FCD8B3DA237DA8A4 /* [CP] Check Pods Manifest.lock */,
+				3DEE3B84D0CC06F737AF5B1D /* [CP] Check Pods Manifest.lock */,
 				8B1999E920F8D5C000B2CFC0 /* Sources */,
 				8B1999EA20F8D5C000B2CFC0 /* Frameworks */,
 				8B1999EB20F8D5C000B2CFC0 /* Resources */,
@@ -253,25 +253,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		017071DE34DC8B9513990DDA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MockGenerator-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		03619C29FCD8B3DA237DA8A4 /* [CP] Check Pods Manifest.lock */ = {
+		3DEE3B84D0CC06F737AF5B1D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,6 +298,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = " \"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/AutoMockable.generated.swift\"";
+		};
+		950154A39E979F69F2D0DA02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MockGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -485,7 +485,7 @@
 		};
 		8B1999F720F8D5C000B2CFC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53AB72B34B4B463075A88EB4 /* Pods-MockGenerator.debug.xcconfig */;
+			baseConfigurationReference = B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,7 +504,7 @@
 		};
 		8B1999F820F8D5C000B2CFC0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12A4A062989BECE713963E75 /* Pods-MockGenerator.release.xcconfig */;
+			baseConfigurationReference = 51067E913A7B50C6F404C3F3 /* Pods-MockGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,7 +523,7 @@
 		};
 		8B1999FA20F8D5C000B2CFC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17598A579BB2154ADF474F60 /* Pods-MockGeneratorTests.debug.xcconfig */;
+			baseConfigurationReference = 4B30BFD769E34B5D4005CA8F /* Pods-MockGeneratorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -545,7 +545,7 @@
 		};
 		8B1999FB20F8D5C000B2CFC0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D20BF217F0321A93BF966FC /* Pods-MockGeneratorTests.release.xcconfig */;
+			baseConfigurationReference = 54878D54CF0FF279F1809511 /* Pods-MockGeneratorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
