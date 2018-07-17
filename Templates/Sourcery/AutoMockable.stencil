@@ -1,6 +1,6 @@
 // swiftlint:disable all
 
-@testable import MockGenerator
+@testable import {{ argument.project }}
 
 {% macro swiftifyMethodName name %}{{ name | replace:"(","_" | replace:")","" | replace:":","_" | replace:"`","" | snakeToCamelCase | lowerFirstWord }}{% endmacro %}
 

@@ -6,3 +6,5 @@ output:
   Tests/
 prune:
   true
+args:
+  project: "MockGenerator"
