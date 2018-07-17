@@ -10,14 +10,14 @@ import Foundation
 
 // sourcery: MockableProtocol
 protocol TestingPresenter {
-  var niceVariable: String { get }
-  var niceVariable2: Int? { get set }
+//  var myVariableSet: (() -> String) { get }
+//  var niceVariable2: Int? { get set }
 
-  func emptyMethod()
-  func methodWithThrow() throws -> String
-  func methodWithReturn() -> String
-  func methodWithSingleParamReturn(crvsh: String)
-  func methodWithMultipleParams(name: String, lastName: String)
-  func methodWithParamsAndReturn(name: String, lastName: String) -> String
-  func methodWithScape(completion: @escaping (Bool, Error?) -> Void)
+//  func emptyMethod()
+//  func methodWithReturn() -> String
+//  func methodWithThrow() throws -> String
+  func methodWithSingleParam(crvsh: String) -> Bool
+//  func methodWithMultipleParams(name: String, lastName: String)
+//  func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bool
+//  func methodWithScape(completion: @escaping (Bool, Error?) -> Void)
 }
