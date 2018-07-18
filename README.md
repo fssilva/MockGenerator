@@ -1,6 +1,6 @@
 # MockGenerator 
 
-iOS Mock Generator provides the ability to easily generate mocks for swift protocols. It removes the boilerplate coding required to use mocks in your app.
+iOS Mock Generator provides the ability to easily generate mocks for swift protocols and classes. It removes the boilerplate coding required to use mocks in your app.
 
 [![Build Status](https://travis-ci.org/fssilva/MockGenerator.svg?branch=develop)](https://travis-ci.org/fssilva/MockGenerator)
 
