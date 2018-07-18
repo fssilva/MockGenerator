@@ -15,11 +15,11 @@ pod 'SwiftFormat/CLI'
 ```
 
 ### Resources
-1. Copy the following files into your project's root folder
+1. Copy the following file/folder into your project's root folder
 
 
 * `.sourcery.yml` - Sourcery configuration file
-* `AutoMockable.stencil` - Mock template
+* `Templates` - Mock template folder
 
 2. Open the `.sourcery.yml` and change `MockGenerator` to your project's name. If you have any external dependency you can include them in the `dependencies` list
 ```

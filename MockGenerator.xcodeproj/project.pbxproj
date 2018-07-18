@@ -45,7 +45,6 @@
 		8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGeneratorTests.swift; sourceTree = "<group>"; };
 		8B1999F320F8D5C000B2CFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B1999FE20F8D6EC00B2CFC0 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
-		8B199A0220F8D78C00B2CFC0 /* AutoMockable.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoMockable.stencil; sourceTree = "<group>"; };
 		8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPresenter.swift; sourceTree = "<group>"; };
 		B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +93,6 @@
 		8B1999D020F8D5BE00B2CFC0 = {
 			isa = PBXGroup;
 			children = (
-				8B199A0020F8D78C00B2CFC0 /* Templates */,
 				8B1999DB20F8D5BE00B2CFC0 /* Source */,
 				8B1999F020F8D5C000B2CFC0 /* Tests */,
 				8B1999DA20F8D5BE00B2CFC0 /* Products */,
@@ -134,22 +132,6 @@
 				8B1999F320F8D5C000B2CFC0 /* Info.plist */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		8B199A0020F8D78C00B2CFC0 /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				8B199A0120F8D78C00B2CFC0 /* Sourcery */,
-			);
-			path = Templates;
-			sourceTree = "<group>";
-		};
-		8B199A0120F8D78C00B2CFC0 /* Sourcery */ = {
-			isa = PBXGroup;
-			children = (
-				8B199A0220F8D78C00B2CFC0 /* AutoMockable.stencil */,
-			);
-			path = Sourcery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

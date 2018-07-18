@@ -1,7 +1,7 @@
 sources:	
   - Source/		
 templates:	
-  - Templates/Sourcery	
+  - Templates/	
 output:	
   Tests/
 prune:
