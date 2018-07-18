@@ -8,7 +8,7 @@
 
 import Foundation
 
-// sourcery: MockableProtocol
+// sourcery: Mock
 protocol TestingPresenter {
   var myVariable: (() -> String) { get }
   var myVariableWithSet: Int? { get set }

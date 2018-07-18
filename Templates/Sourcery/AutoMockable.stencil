@@ -89,9 +89,7 @@
 {% macro underlyingMockedVariableName variable %}{{ variable.name }}ReturnValue{% endmacro %}
 {% macro mockedVariableName variable %}{{ variable.name }}{% endmacro %}
 
-{% for type in types.protocols where type.based.AutoMockable or type|annotated:"MockableProtocol" %}
-  {% if type.name != "MockableProtocol" %}
-  
+{% for type in types.protocols where type|annotated:"Mock" %}
   // ======================== {{ type.name }} ========================
 
   class {{ type.name }}Mock: {{ type.name }} {
@@ -109,5 +107,4 @@
     {% call mockMethod method %}
   {% endfor %}
   }
-  {% endif %}
 {% endfor %}

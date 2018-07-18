@@ -43,10 +43,10 @@ Add the following run script in your build phase in the mentioned sequence
 ```
 
 ## Usage
-In order to use the mock generator you have use the sourcery annotation `MockableProtocol` e.g.
+In order to use the mock generator you have use the sourcery annotation `Mock` e.g.
 
 ```swift
-// sourcery: MockableProtocol
+// sourcery: Mock
 protocol TestingPresenter {
     ...
 }
