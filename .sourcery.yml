@@ -8,3 +8,4 @@ prune:
   true
 args:
   project: "MockGenerator"
+  dependencies: ["Foundation", "UIKit"]

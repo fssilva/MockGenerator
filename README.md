@@ -52,6 +52,15 @@ protocol TestingPresenter {
 }
 ```
 
+or 
+
+``swift
+// sourcery: Mock
+class MyClass {
+    ...
+}
+```
+
 After building the project a file called  `AutoMockable.generated.swift` will be generated. Add this file into the project for the test target.
 
 ## Expected Behavior
@@ -191,14 +200,14 @@ func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bo
 
 ## Limitations
 
-1. Mock generation for classes are not supported
+1. Mock generation for classes only mock methods (Experimental)
 
 2. Generic types are not supported
 ```swift
 func methodGeneric(type: T) -> String
 ```
 
-3. Protocols with function overload are not supported (coming soon)
+3. Protocols with function overload are not supported (Coming soon)
 ```swift
 func methodWithSingleParam(crvsh: String) -> Bool
 func methodWithSingleParam(crvsh: Int) -> Bool

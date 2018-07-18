@@ -1,6 +1,9 @@
 // swiftlint:disable all
 
 @testable import {{ argument.project }}
+{% for dependency in argument.dependencies %}
+  import {{dependency}}
+{%endfor%}
 
 {% macro swiftifyMethodName name %}{{ name | replace:"(","_" | replace:")","" | replace:":","_" | replace:"`","" | snakeToCamelCase | lowerFirstWord }}{% endmacro %}
 
@@ -24,7 +27,54 @@
   {% endif %}
 {% endmacro %}
 
-{% macro mockMethod method %}
+{% macro mockClassMethod method %}
+  //MARK: - {{ method.shortName }}
+
+  {% if method.throws %}
+    {% call methodThrowableErrorDeclaration method %}
+  {% endif %}
+  
+  {% if method.parameters.count == 1 %}
+    var {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }}: {% if param.isClosure %}({% endif %}{{ param.typeName.unwrappedTypeName }}{% if param.isClosure %}){% endif %}?{% endfor %}
+  {% else %}
+    {% if not method.parameters.count == 0 %}
+      var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
+    {% endif %}
+  {% endif %}
+      
+  {% if not method.returnTypeName.isVoid and not method.isInitializer %}
+      var {% call swiftifyMethodName method.selectorName %}ReturnValue: {{ method.returnTypeName }}{% if not method.isOptionalReturnType %}!{% endif %}
+  {% endif %}
+  
+  {% if not method.isInitializer %}
+    var {% call swiftifyMethodName method.selectorName %}CallsCount = 0
+    var {% call swiftifyMethodName method.selectorName %}WasCalled: Bool {
+    return {% call swiftifyMethodName method.selectorName %}CallsCount > 0
+    }
+  {% endif %}
+  
+  {% if method.isInitializer %}
+    override required {{ method.name }} {
+      super.init({% for param in method.parameters %}{{ param.name }}: {{ param.name }}{% if not forloop.last%}, {% endif %}{% endfor %})
+      {% call methodReceivedParameters method %}
+    }
+  {% else %}
+    override func {{ method.name }}{% if method.throws %} throws{% endif %}{% if not method.returnTypeName.isVoid %} -> {{ method.returnTypeName }}{% endif %} {
+    {% if method.throws %}
+      {% call methodThrowableErrorUsage method %}
+    {% endif %}
+    
+    {% call swiftifyMethodName method.selectorName %}CallsCount += 1
+    {% call methodReceivedParameters method %}
+    
+    {% if not method.returnTypeName.isVoid %}
+      return {% call swiftifyMethodName method.selectorName %}ReturnValue
+    {% endif %}
+    }
+  {% endif %}
+{% endmacro %}
+
+{% macro mockProtocolMethod method %}
   //MARK: - {{ method.shortName }}
 
   {% if method.throws %}
@@ -104,7 +154,18 @@
   {% endfor %}
 
   {% for method in type.allMethods|!definedInExtension %}
-    {% call mockMethod method %}
+    {% call mockProtocolMethod method %}
+  {% endfor %}
+  }
+{% endfor %}
+
+{% for type in types.classes where type|annotated:"Mock" %}
+  // ======================== {{ type.name }} ========================
+
+  class {{ type.name }}Mock: {{ type.name }} {
+
+  {% for method in type.allMethods|!definedInExtension|!private|!initializer %}
+    {% call mockClassMethod method %}
   {% endfor %}
   }
 {% endfor %}
