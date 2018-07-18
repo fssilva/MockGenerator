@@ -21,12 +21,13 @@ pod 'SwiftFormat/CLI'
 * `.sourcery.yml` - Sourcery configuration file
 * `AutoMockable.stencil` - Mock template
 
-2. Open the `.sourcery.yml` and change `MockGenerator` to your project's name
+2. Open the `.sourcery.yml` and change `MockGenerator` to your project's name. If you have any external dependency you can include them in the `dependencies` list
 ```
 ...
 
 args:
   project: "MockGenerator"
+  dependencies: ["Foundation", "UIKit"]
 ```
 
 ### Xcode Build Scripts
@@ -47,14 +48,11 @@ In order to use the mock generator you have use the sourcery annotation `Mock` e
 
 ```swift
 // sourcery: Mock
-protocol TestingPresenter {
+protocol MyProtocol {
     ...
 }
-```
 
-or 
 
-``swift
 // sourcery: Mock
 class MyClass {
     ...
@@ -200,7 +198,7 @@ func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bo
 
 ## Limitations
 
-1. Mock generation for classes only mock methods (Experimental)
+1. Code generation for classes only apply for methods (Experimental)
 
 2. Generic types are not supported
 ```swift
