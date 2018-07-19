@@ -1,0 +1,11 @@
+sources:	
+  - Source/		
+templates:	
+  - Templates/	
+output:	
+  Tests/
+prune:
+  true
+args:
+  productName: "MockGenerator"
+  dependencies: ["Foundation", "UIKit"]
