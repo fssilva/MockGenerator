@@ -61,6 +61,10 @@ class TestingPresenterMock: TestingPresenter {
   // MARK: - methodWithSingleParam
 
   var methodWithSingleParamCrvshReceivedArguments: [String] = []
+  var methodWithSingleParamCrvshLastArgumentReceived: String? {
+    return methodWithSingleParamCrvshReceivedArguments.last
+  }
+
   var methodWithSingleParamCrvshReturnValue: Bool!
   var methodWithSingleParamCrvshCallsCount = 0
   var methodWithSingleParamCrvshWasCalled: Bool {
@@ -76,6 +80,10 @@ class TestingPresenterMock: TestingPresenter {
   // MARK: - methodWithSingleOptionalParam
 
   var methodWithSingleOptionalParamCrvshReceivedArguments: [String?] = []
+  var methodWithSingleOptionalParamCrvshLastArgumentReceived: (String?)? {
+    return methodWithSingleOptionalParamCrvshReceivedArguments.last
+  }
+
   var methodWithSingleOptionalParamCrvshReturnValue: Bool!
   var methodWithSingleOptionalParamCrvshCallsCount = 0
   var methodWithSingleOptionalParamCrvshWasCalled: Bool {
@@ -91,6 +99,10 @@ class TestingPresenterMock: TestingPresenter {
   // MARK: - methodWithMultipleParams
 
   var methodWithMultipleParamsNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
+  var methodWithMultipleParamsNameLastNameLastArgumentReceived: ((name: String, lastName: String))? {
+    return methodWithMultipleParamsNameLastNameReceivedArguments.last
+  }
+
   var methodWithMultipleParamsNameLastNameCallsCount = 0
   var methodWithMultipleParamsNameLastNameWasCalled: Bool {
     return methodWithMultipleParamsNameLastNameCallsCount > 0
@@ -105,6 +117,10 @@ class TestingPresenterMock: TestingPresenter {
 
   var methodThrowWithParamsAndReturnParam1Param2ThrowableError: Error?
   var methodThrowWithParamsAndReturnParam1Param2ReceivedArguments: [(param1: String, param2: String)] = []
+  var methodThrowWithParamsAndReturnParam1Param2LastArgumentReceived: ((param1: String, param2: String))? {
+    return methodThrowWithParamsAndReturnParam1Param2ReceivedArguments.last
+  }
+
   var methodThrowWithParamsAndReturnParam1Param2ReturnValue: Bool!
   var methodThrowWithParamsAndReturnParam1Param2CallsCount = 0
   var methodThrowWithParamsAndReturnParam1Param2WasCalled: Bool {
@@ -123,6 +139,10 @@ class TestingPresenterMock: TestingPresenter {
   // MARK: - methodWithScape
 
   var methodWithScapeCompletionReceivedArguments: [(Bool, Error?) -> Void] = []
+  var methodWithScapeCompletionLastArgumentReceived: ((Bool, Error?) -> Void)? {
+    return methodWithScapeCompletionReceivedArguments.last
+  }
+
   var methodWithScapeCompletionCallsCount = 0
   var methodWithScapeCompletionWasCalled: Bool {
     return methodWithScapeCompletionCallsCount > 0
@@ -141,6 +161,10 @@ class TestMock: Test {
   // MARK: - methodWithSingleParam
 
   var methodWithSingleParamCrvshReceivedArguments: [String?] = []
+  var methodWithSingleParamCrvshLastArgumentReceived: (String?)? {
+    return methodWithSingleParamCrvshReceivedArguments.last
+  }
+
   var methodWithSingleParamCrvshReturnValue: Bool!
   var methodWithSingleParamCrvshCallsCount = 0
   var methodWithSingleParamCrvshWasCalled: Bool {
@@ -156,6 +180,10 @@ class TestMock: Test {
   // MARK: - methodWithSingleOptionalParam
 
   var methodWithSingleOptionalParamCrvshReceivedArguments: [String?] = []
+  var methodWithSingleOptionalParamCrvshLastArgumentReceived: (String?)? {
+    return methodWithSingleOptionalParamCrvshReceivedArguments.last
+  }
+
   var methodWithSingleOptionalParamCrvshReturnValue: Bool!
   var methodWithSingleOptionalParamCrvshCallsCount = 0
   var methodWithSingleOptionalParamCrvshWasCalled: Bool {
@@ -171,6 +199,10 @@ class TestMock: Test {
   // MARK: - methodWithMultipleParams
 
   var methodWithMultipleParamsNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
+  var methodWithMultipleParamsNameLastNameLastArgumentReceived: ((name: String, lastName: String))? {
+    return methodWithMultipleParamsNameLastNameReceivedArguments.last
+  }
+
   var methodWithMultipleParamsNameLastNameCallsCount = 0
   var methodWithMultipleParamsNameLastNameWasCalled: Bool {
     return methodWithMultipleParamsNameLastNameCallsCount > 0
@@ -184,6 +216,10 @@ class TestMock: Test {
   // MARK: - methodWithScape
 
   var methodWithScapeCompletionReceivedArguments: [(Bool, Error?) -> Void] = []
+  var methodWithScapeCompletionLastArgumentReceived: ((Bool, Error?) -> Void)? {
+    return methodWithScapeCompletionReceivedArguments.last
+  }
+
   var methodWithScapeCompletionCallsCount = 0
   var methodWithScapeCompletionWasCalled: Bool {
     return methodWithScapeCompletionCallsCount > 0

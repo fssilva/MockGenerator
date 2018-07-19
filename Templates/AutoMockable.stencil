@@ -40,9 +40,15 @@
   
   {% if method.parameters.count == 1 %}
     var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %}] = []
+    var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: ({% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %})? {
+      return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+    }
   {% else %}
     {% if not method.parameters.count == 0 %}
       var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
+      var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: (({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %}))? {
+        return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+      }
     {% endif %}
   {% endif %}
       
@@ -93,9 +99,15 @@
   
   {% if method.parameters.count == 1 %}
     var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %}] = []
+    var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: ({% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %})? {
+      return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+    }
   {% else %}
     {% if not method.parameters.count == 0 %}
       var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
+      var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: (({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %}))? {
+        return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+      }
     {% endif %}
   {% endif %}
       
