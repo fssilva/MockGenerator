@@ -73,6 +73,21 @@ class TestingPresenterMock: TestingPresenter {
     return methodWithSingleParamCrvshReturnValue
   }
 
+  // MARK: - methodWithSingleOptionalParam
+
+  var methodWithSingleOptionalParamCrvshReceivedArguments: [String?] = []
+  var methodWithSingleOptionalParamCrvshReturnValue: Bool!
+  var methodWithSingleOptionalParamCrvshCallsCount = 0
+  var methodWithSingleOptionalParamCrvshWasCalled: Bool {
+    return methodWithSingleOptionalParamCrvshCallsCount > 0
+  }
+
+  func methodWithSingleOptionalParam(crvsh: String?) -> Bool {
+    methodWithSingleOptionalParamCrvshCallsCount += 1
+    methodWithSingleOptionalParamCrvshReceivedArguments.append(crvsh)
+    return methodWithSingleOptionalParamCrvshReturnValue
+  }
+
   // MARK: - methodWithMultipleParams
 
   var methodWithMultipleParamsNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
@@ -125,17 +140,32 @@ class TestMock: Test {
 
   // MARK: - methodWithSingleParam
 
-  var methodWithSingleParamCrvshReceivedArguments: [String] = []
+  var methodWithSingleParamCrvshReceivedArguments: [String?] = []
   var methodWithSingleParamCrvshReturnValue: Bool!
   var methodWithSingleParamCrvshCallsCount = 0
   var methodWithSingleParamCrvshWasCalled: Bool {
     return methodWithSingleParamCrvshCallsCount > 0
   }
 
-  override func methodWithSingleParam(crvsh: String) -> Bool {
+  override func methodWithSingleParam(crvsh: String?) -> Bool {
     methodWithSingleParamCrvshCallsCount += 1
     methodWithSingleParamCrvshReceivedArguments.append(crvsh)
     return methodWithSingleParamCrvshReturnValue
+  }
+
+  // MARK: - methodWithSingleOptionalParam
+
+  var methodWithSingleOptionalParamCrvshReceivedArguments: [String?] = []
+  var methodWithSingleOptionalParamCrvshReturnValue: Bool!
+  var methodWithSingleOptionalParamCrvshCallsCount = 0
+  var methodWithSingleOptionalParamCrvshWasCalled: Bool {
+    return methodWithSingleOptionalParamCrvshCallsCount > 0
+  }
+
+  override func methodWithSingleOptionalParam(crvsh: String?) -> Bool {
+    methodWithSingleOptionalParamCrvshCallsCount += 1
+    methodWithSingleOptionalParamCrvshReceivedArguments.append(crvsh)
+    return methodWithSingleOptionalParamCrvshReturnValue
   }
 
   // MARK: - methodWithMultipleParams
@@ -149,5 +179,18 @@ class TestMock: Test {
   override func methodWithMultipleParams(name: String, lastName: String) {
     methodWithMultipleParamsNameLastNameCallsCount += 1
     methodWithMultipleParamsNameLastNameReceivedArguments.append((name: name, lastName: lastName))
+  }
+
+  // MARK: - methodWithScape
+
+  var methodWithScapeCompletionReceivedArguments: [(Bool, Error?) -> Void] = []
+  var methodWithScapeCompletionCallsCount = 0
+  var methodWithScapeCompletionWasCalled: Bool {
+    return methodWithScapeCompletionCallsCount > 0
+  }
+
+  override func methodWithScape(completion: @escaping (Bool, Error?) -> Void) {
+    methodWithScapeCompletionCallsCount += 1
+    methodWithScapeCompletionReceivedArguments.append(completion)
   }
 }

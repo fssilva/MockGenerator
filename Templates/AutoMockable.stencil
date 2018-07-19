@@ -39,7 +39,7 @@
   {% endif %}
   
   {% if method.parameters.count == 1 %}
-    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{{ method.parameters.first.unwrappedTypeName }}] = []
+    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %}] = []
   {% else %}
     {% if not method.parameters.count == 0 %}
       var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
@@ -80,6 +80,10 @@
 
 {######## PROTOCOL ###########}
 
+{% macro typeForParamReceivedArgument param %} 
+  {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}
+{% endmacro %}
+
 {% macro mockProtocolMethod method %}
   //MARK: - {{ method.shortName }}
 
@@ -88,7 +92,7 @@
   {% endif %}
   
   {% if method.parameters.count == 1 %}
-    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{{ method.parameters.first.unwrappedTypeName }}] = []
+    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% else %}{{ method.parameters.first.typeName }}{% endif %}] = []
   {% else %}
     {% if not method.parameters.count == 0 %}
       var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []

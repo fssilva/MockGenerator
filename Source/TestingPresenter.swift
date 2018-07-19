@@ -19,6 +19,7 @@ protocol TestingPresenter {
   func methodWithReturn() -> String
   func methodWithThrow() throws -> String
   func methodWithSingleParam(crvsh: String) -> Bool
+  func methodWithSingleOptionalParam(crvsh: String?) -> Bool
   func methodWithMultipleParams(name: String, lastName: String)
   func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bool
   func methodWithScape(completion: @escaping (Bool, Error?) -> Void)
@@ -26,11 +27,19 @@ protocol TestingPresenter {
 
 // sourcery: Mock
 class Test {
-  func methodWithSingleParam(crvsh: String) -> Bool {
+  func methodWithSingleParam(crvsh: String?) -> Bool {
     return true
   }
 
+  func methodWithSingleOptionalParam(crvsh: String?) -> Bool {
+    return false
+  }
+
   func methodWithMultipleParams(name: String, lastName: String) {
+
+  }
+
+  func methodWithScape(completion: @escaping (Bool, Error?) -> Void) {
 
   }
 }
