@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 
+class GenericClass<T> {
+
+  var myVariable: T!
+
+}
+
 // sourcery: Mock
 protocol TestingPresenter {
 
@@ -23,6 +29,11 @@ protocol TestingPresenter {
   func methodWithMultipleParams(name: String, lastName: String)
   func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bool
   func methodWithScape(completion: @escaping (Bool, Error?) -> Void)
+
+  //sourcery: Generic
+  func genericMethod<T>(param: GenericClass<T>, param2: String) -> T
+  //sourcery: Generic
+  func anotherGenericMethod<T>(param: T) throws -> T
 }
 
 // sourcery: Mock

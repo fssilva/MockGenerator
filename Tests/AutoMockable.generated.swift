@@ -152,6 +152,48 @@ class TestingPresenterMock: TestingPresenter {
     methodWithScapeCompletionCallsCount += 1
     methodWithScapeCompletionReceivedArguments.append(completion)
   }
+
+  // MARK: - genericMethod<T>
+
+  var genericMethodParamParam2ReceivedArguments: [(param: Any, param2: Any)] = []
+  var genericMethodParamParam2LastArgumentReceived: ((param: Any, param2: Any))? {
+    return genericMethodParamParam2ReceivedArguments.last
+  }
+
+  var genericMethodParamParam2ReturnValue: Any!
+  var genericMethodParamParam2CallsCount = 0
+  var genericMethodParamParam2WasCalled: Bool {
+    return genericMethodParamParam2CallsCount > 0
+  }
+
+  func genericMethod<T>(param: GenericClass<T>, param2: String) -> T {
+    genericMethodParamParam2CallsCount += 1
+    genericMethodParamParam2ReceivedArguments.append((param: param, param2: param2))
+    return genericMethodParamParam2ReturnValue as! T
+  }
+
+  // MARK: - anotherGenericMethod<T>
+
+  var anotherGenericMethodParamThrowableError: Error?
+  var anotherGenericMethodParamReceivedArguments: [Any] = []
+  var anotherGenericMethodParamLastArgumentReceived: Any? {
+    return anotherGenericMethodParamReceivedArguments.last
+  }
+
+  var anotherGenericMethodParamReturnValue: Any!
+  var anotherGenericMethodParamCallsCount = 0
+  var anotherGenericMethodParamWasCalled: Bool {
+    return anotherGenericMethodParamCallsCount > 0
+  }
+
+  func anotherGenericMethod<T>(param: T) throws -> T {
+    if let error = anotherGenericMethodParamThrowableError {
+      throw error
+    }
+    anotherGenericMethodParamCallsCount += 1
+    anotherGenericMethodParamReceivedArguments.append(param)
+    return anotherGenericMethodParamReturnValue as! T
+  }
 }
 
 // ======================== Test ========================
