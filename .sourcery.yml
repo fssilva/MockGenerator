@@ -7,5 +7,5 @@ output:
 prune:
   true
 args:
-  project: "MockGenerator"
+  productName: "MockGenerator"
   dependencies: ["Foundation", "UIKit"]

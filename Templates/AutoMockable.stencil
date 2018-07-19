@@ -1,6 +1,6 @@
 // swiftlint:disable all
 
-@testable import {{ argument.project }}
+@testable import {{ argument.productName }}
 {% for dependency in argument.dependencies %}
   import {{dependency}}
 {%endfor%}
@@ -129,14 +129,15 @@
 {% endmacro %}
 
 {% macro mockNonOptionalVariable variable %}
-  var {% call underlyingMockedVariableName variable %}: {{ variable.typeName }}!
-  var {% call mockedVariableName variable %}: {{ variable.typeName }} {
-  get { return {% call underlyingMockedVariableName variable %} }
-  set(value) { {% call underlyingMockedVariableName variable %} = value }
+  var {% call underlyingMockedVariableName variable %}: {{ variable.typeName }}?
+  var {% call mockedVariableName variable %}: {{ variable.typeName }} = {{ variable.typeName }}() {
+    didSet {
+      {% call underlyingMockedVariableName variable %} = {% call mockedVariableName variable %}
+    }
   }
 {% endmacro %}
 
-{% macro underlyingMockedVariableName variable %}{{ variable.name }}ReturnValue{% endmacro %}
+{% macro underlyingMockedVariableName variable %}set{{ variable.name|upperFirstLetter }}Param{% endmacro %}
 {% macro mockedVariableName variable %}{{ variable.name }}{% endmacro %}
 
 {% for type in types.protocols where type|annotated:"Mock" %}

@@ -15,8 +15,8 @@
 		8B1999E420F8D5BF00B2CFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E320F8D5BF00B2CFC0 /* Assets.xcassets */; };
 		8B1999E720F8D5BF00B2CFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E520F8D5BF00B2CFC0 /* LaunchScreen.storyboard */; };
 		8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */; };
-		8B199A0420F8D7EB00B2CFC0 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999FE20F8D6EC00B2CFC0 /* AutoMockable.generated.swift */; };
 		8B199A0620F8D82800B2CFC0 /* TestingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */; };
+		8B58E6B22100895A002CA78C /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +44,8 @@
 		8B1999ED20F8D5C000B2CFC0 /* MockGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGeneratorTests.swift; sourceTree = "<group>"; };
 		8B1999F320F8D5C000B2CFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B1999FE20F8D6EC00B2CFC0 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPresenter.swift; sourceTree = "<group>"; };
+		8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,7 +127,7 @@
 		8B1999F020F8D5C000B2CFC0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8B1999FE20F8D6EC00B2CFC0 /* AutoMockable.generated.swift */,
+				8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */,
 				8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */,
 				8B1999F320F8D5C000B2CFC0 /* Info.plist */,
 			);
@@ -317,7 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */,
-				8B199A0420F8D7EB00B2CFC0 /* AutoMockable.generated.swift in Sources */,
+				8B58E6B22100895A002CA78C /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

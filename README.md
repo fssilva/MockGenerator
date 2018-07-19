@@ -21,12 +21,12 @@ pod 'SwiftFormat/CLI'
 * `.sourcery.yml` - Sourcery configuration file
 * `Templates` - Mock template folder
 
-2. Open the `.sourcery.yml` and change `MockGenerator` to your project's name. If you have any external dependency you can include them in the `dependencies` list
+2. Open the `.sourcery.yml` and change `MockGenerator` to your product name. If you have any external dependency you can include them in the `dependencies` list
 ```
 ...
 
 args:
-  project: "MockGenerator"
+  productName: "MockGenerator"
   dependencies: ["Foundation", "UIKit"]
 ```
 
@@ -35,12 +35,12 @@ Add the following run script in your build phase in the mentioned sequence
 
 1. [Sourcery](https://github.com/krzysztofzablocki/Sourcery)
 ```ruby
-"$PODS_ROOT/Sourcery/bin/sourcery"`
+"$PODS_ROOT/Sourcery/bin/sourcery"
 ```
 
 2. [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 ```ruby
-"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" --indent 2 "${SRCROOT}/AutoMockable.generated.swift"
+"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" --indent 2 "${SRCROOT}/Tests/AutoMockable.generated.swift"
 ```
 
 ## Usage
@@ -71,23 +71,25 @@ var myVariable: String { get }
 
 // Outputs
 
-var myVariableReturnValue: String!
-var myVariable: String {
-  get { return myVariableReturnValue }
-  set(value) { myVariableReturnValue = value }
+var setMyVariableParam: String?
+var myVariable: String = String() {
+  didSet {
+    setMyVariableParam = myVariable
+  }
 }
 ```
 
 2. Variable with get and set
 ```swift
-var myVariableSet: String { get set }
+var myVariable: String { get set }
 
 // Outputs
 
-var myVariableSetReturnValue: String!
-var myVariableSet: String {
-  get { return myVariableSetReturnValue }
-  set(value) { myVariableSetReturnValue = value }
+var setMyVariableParam: String?
+var myVariable: String = String() {
+  didSet {
+    setMyVariableParam = myVariable
+  }
 }
 ```
 
