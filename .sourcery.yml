@@ -3,7 +3,7 @@ sources:
 templates:	
   - Templates/	
 output:	
-  Tests/
+  Tests/Generated/
 prune:
   true
 args:

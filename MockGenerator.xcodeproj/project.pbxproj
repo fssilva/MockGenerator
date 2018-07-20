@@ -16,7 +16,11 @@
 		8B1999E720F8D5BF00B2CFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E520F8D5BF00B2CFC0 /* LaunchScreen.storyboard */; };
 		8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */; };
 		8B199A0620F8D82800B2CFC0 /* TestingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */; };
-		8B58E6B22100895A002CA78C /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */; };
+		8B58E6B72100E25E002CA78C /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6B62100E25E002CA78C /* AutoMockable.swift */; };
+		8B58E6BD2100E8F8002CA78C /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
+		8B58E6BE2100E967002CA78C /* AutoMockable.expected in Resources */ = {isa = PBXBuildFile; fileRef = 8B58E6B82100E35D002CA78C /* AutoMockable.expected */; };
+		8B58E6BF2100EB9A002CA78C /* AutoMockable.generated.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
+		8B58E6C12100EC46002CA78C /* AutoMockable.generated.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +32,19 @@
 			remoteInfo = MockGenerator;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8B58E6C02100EC20002CA78C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				8B58E6C12100EC46002CA78C /* AutoMockable.generated.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4B30BFD769E34B5D4005CA8F /* Pods-MockGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -45,7 +62,9 @@
 		8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGeneratorTests.swift; sourceTree = "<group>"; };
 		8B1999F320F8D5C000B2CFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPresenter.swift; sourceTree = "<group>"; };
-		8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		8B58E6B62100E25E002CA78C /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
+		8B58E6B82100E35D002CA78C /* AutoMockable.expected */ = {isa = PBXFileReference; explicitFileType = text; path = AutoMockable.expected; sourceTree = "<group>"; };
+		8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		B9FDA0CD76EBB3B94C75DC3D /* Pods-MockGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,11 +146,37 @@
 		8B1999F020F8D5C000B2CFC0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8B58E6B12100895A002CA78C /* AutoMockable.generated.swift */,
+				8B58E6B52100E1FD002CA78C /* Generated */,
+				8B58E6B42100E1EF002CA78C /* Expected */,
+				8B58E6B32100E1E5002CA78C /* Context */,
 				8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */,
 				8B1999F320F8D5C000B2CFC0 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		8B58E6B32100E1E5002CA78C /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				8B58E6B62100E25E002CA78C /* AutoMockable.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		8B58E6B42100E1EF002CA78C /* Expected */ = {
+			isa = PBXGroup;
+			children = (
+				8B58E6B82100E35D002CA78C /* AutoMockable.expected */,
+			);
+			path = Expected;
+			sourceTree = "<group>";
+		};
+		8B58E6B52100E1FD002CA78C /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +210,9 @@
 				8B1999E920F8D5C000B2CFC0 /* Sources */,
 				8B1999EA20F8D5C000B2CFC0 /* Frameworks */,
 				8B1999EB20F8D5C000B2CFC0 /* Resources */,
+				E66B54A25BBDEDC4FEA88831 /* [CP] Embed Pods Frameworks */,
+				8B58E6BA2100E5EF002CA78C /* Sourcery */,
+				8B58E6C02100EC20002CA78C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -229,6 +277,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B58E6BF2100EB9A002CA78C /* AutoMockable.generated.swift in Resources */,
+				8B58E6BE2100E967002CA78C /* AutoMockable.expected in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +315,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\"";
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \".sourcery.yml\"";
 		};
 		8B199A0720FC874500B2CFC0 /* Sourcery Code Format */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -279,7 +329,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/AutoMockable.generated.swift\"";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/Generated/AutoMockable.generated.swift\"";
+		};
+		8B58E6BA2100E5EF002CA78C /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \"Tests/.sourcery.yml\"\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/Generated/AutoMockable.generated.swift\"";
 		};
 		950154A39E979F69F2D0DA02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -297,6 +361,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E66B54A25BBDEDC4FEA88831 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -317,7 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */,
-				8B58E6B22100895A002CA78C /* AutoMockable.generated.swift in Sources */,
+				8B58E6BD2100E8F8002CA78C /* AutoMockable.generated.swift in Sources */,
+				8B58E6B72100E25E002CA78C /* AutoMockable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

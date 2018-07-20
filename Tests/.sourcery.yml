@@ -1,0 +1,13 @@
+sources:	
+  - Context/		
+templates:	
+  - ../Templates/	
+output:	
+  Generated/
+prune:
+  true
+disableCache:
+  true
+args:
+  productName: "MockGenerator"
+  dependencies: ["Foundation", "UIKit"]
