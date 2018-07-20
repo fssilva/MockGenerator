@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		055F99A478575AB63FC3DEFB /* Pods_MockGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */; };
 		58F6CDB998AB55A953A39D03 /* Pods_MockGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */; };
+		8B01599C2101D885000CC58A /* MockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B01599B2101D885000CC58A /* MockTests.swift */; };
 		8B1999DD20F8D5BE00B2CFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999DC20F8D5BE00B2CFC0 /* AppDelegate.swift */; };
 		8B1999DF20F8D5BE00B2CFC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999DE20F8D5BE00B2CFC0 /* ViewController.swift */; };
 		8B1999E220F8D5BE00B2CFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E020F8D5BE00B2CFC0 /* Main.storyboard */; };
 		8B1999E420F8D5BF00B2CFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E320F8D5BF00B2CFC0 /* Assets.xcassets */; };
 		8B1999E720F8D5BF00B2CFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1999E520F8D5BF00B2CFC0 /* LaunchScreen.storyboard */; };
-		8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */; };
 		8B199A0620F8D82800B2CFC0 /* TestingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */; };
 		8B58E6B72100E25E002CA78C /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6B62100E25E002CA78C /* AutoMockable.swift */; };
 		8B58E6BD2100E8F8002CA78C /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
@@ -51,6 +51,7 @@
 		51067E913A7B50C6F404C3F3 /* Pods-MockGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGenerator.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGenerator/Pods-MockGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		54878D54CF0FF279F1809511 /* Pods-MockGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockGeneratorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
 		6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B01599B2101D885000CC58A /* MockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTests.swift; sourceTree = "<group>"; };
 		8B1999D920F8D5BE00B2CFC0 /* MockGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1999DC20F8D5BE00B2CFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B1999DE20F8D5BE00B2CFC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,9 +60,9 @@
 		8B1999E620F8D5BF00B2CFC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1999E820F8D5C000B2CFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B1999ED20F8D5C000B2CFC0 /* MockGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGeneratorTests.swift; sourceTree = "<group>"; };
 		8B1999F320F8D5C000B2CFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B199A0520F8D82800B2CFC0 /* TestingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPresenter.swift; sourceTree = "<group>"; };
+		8B41ED172101DEBA0014F1A3 /* Pods_MockGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MockGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B58E6B62100E25E002CA78C /* AutoMockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		8B58E6B82100E35D002CA78C /* AutoMockable.expected */ = {isa = PBXFileReference; explicitFileType = text; path = AutoMockable.expected; sourceTree = "<group>"; };
 		8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		049502B713EC79E772B2B56F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B41ED172101DEBA0014F1A3 /* Pods_MockGeneratorTests.framework */,
 				EC7649D1E09193738B509B78 /* Pods_MockGenerator.framework */,
 				6D82843C7B79DAA19356FF15 /* Pods_MockGeneratorTests.framework */,
 			);
@@ -149,8 +151,8 @@
 				8B58E6B52100E1FD002CA78C /* Generated */,
 				8B58E6B42100E1EF002CA78C /* Expected */,
 				8B58E6B32100E1E5002CA78C /* Context */,
-				8B1999F120F8D5C000B2CFC0 /* MockGeneratorTests.swift */,
 				8B1999F320F8D5C000B2CFC0 /* Info.plist */,
+				8B01599B2101D885000CC58A /* MockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -371,12 +373,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MockGeneratorTests/Pods-MockGeneratorTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -400,9 +400,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1999F220F8D5C000B2CFC0 /* MockGeneratorTests.swift in Sources */,
 				8B58E6BD2100E8F8002CA78C /* AutoMockable.generated.swift in Sources */,
 				8B58E6B72100E25E002CA78C /* AutoMockable.swift in Sources */,
+				8B01599C2101D885000CC58A /* MockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

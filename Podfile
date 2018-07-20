@@ -11,8 +11,6 @@ target 'MockGenerator' do
 
   target 'MockGeneratorTests' do
     inherit! :search_paths
-    
-    pod 'Quick'
     pod 'Nimble'
   end
 
