@@ -19,7 +19,7 @@
 
 {% macro methodReceivedParameters method %}
   {%if method.parameters.count == 1 %}
-    {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }} = {{ param.name }}{% endfor %}
+  {% call swiftifyMethodName method.selectorName %}ReceivedArguments.append( {{method.parameters.first.name}} )
   {% else %}
     {% if not method.parameters.count == 0 %}
       {% call swiftifyMethodName method.selectorName %}ReceivedArguments.append( ({% for param in method.parameters %}{{ param.name }}: {{ param.name }}{% if not forloop.last%}, {% endif %}{% endfor %}))
@@ -27,31 +27,48 @@
   {% endif %}
 {% endmacro %}
 
-{% macro mockClassMethod method %}
-  //MARK: - {{ method.shortName }}
+{% macro typeForMethod method %}{% for param in method.parameters %}{{ param.name|upperFirstLetter }}: {% if param.isClosure %}({% endif %}{% if method|annotated:"Generic" %}Any{% else %}{{ param.typeName.unwrappedTypeName }}{% endif %}{% if param.isClosure %}){% endif %}?{% endfor %}{% endmacro %}
 
+{######## SPY ###########}
+
+{% macro spyOnMethod method %}
   {% if method.throws %}
     {% call methodThrowableErrorDeclaration method %}
   {% endif %}
-  
   {% if method.parameters.count == 1 %}
-    var {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }}: {% if param.isClosure %}({% endif %}{{ param.typeName.unwrappedTypeName }}{% if param.isClosure %}){% endif %}?{% endfor %}
-  {% else %}
-    {% if not method.parameters.count == 0 %}
-      var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
-    {% endif %}
+    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [{% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% elif method|annotated:"Generic" %}Any{% else %}{{ method.parameters.first.typeName }}{% endif %}] = []
+    var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: ({% if method.parameters.first.typeAttributes.escaping %}{{ method.parameters.first.unwrappedTypeName }}{% elif method|annotated:"Generic" %}Any{% else %}{{ method.parameters.first.typeName }}{% endif %})? {
+      return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+    }
+  {% elif  method.parameters.count > 1 %}
+    var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if method|annotated:"Generic" %}Any{% elif param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
+    var {% call swiftifyMethodName method.selectorName %}LastArgumentReceived: (({% for param in method.parameters %}{{ param.name }}: {% if method|annotated:"Generic" %}Any{% elif param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %}))? {
+      return {% call swiftifyMethodName method.selectorName %}ReceivedArguments.last
+    }
   {% endif %}
-      
   {% if not method.returnTypeName.isVoid and not method.isInitializer %}
-      var {% call swiftifyMethodName method.selectorName %}ReturnValue: {{ method.returnTypeName }}{% if not method.isOptionalReturnType %}!{% endif %}
+      var {% call swiftifyMethodName method.selectorName %}ReturnValue: {% if method|annotated:"Generic" %}Any{% else %}{{ method.returnTypeName }}{% endif %}{% if not method.isOptionalReturnType %}!{% endif %}
   {% endif %}
-  
   {% if not method.isInitializer %}
     var {% call swiftifyMethodName method.selectorName %}CallsCount = 0
     var {% call swiftifyMethodName method.selectorName %}WasCalled: Bool {
-    return {% call swiftifyMethodName method.selectorName %}CallsCount > 0
+      return {% call swiftifyMethodName method.selectorName %}CallsCount > 0
     }
   {% endif %}
+{% endmacro %}
+
+{% macro generateMethodReturn method %}
+  {% if not method.returnTypeName.isVoid %}
+    return {% call swiftifyMethodName method.selectorName %}ReturnValue {% if method|annotated:"Generic" %}as! {{method.returnTypeName}}{% endif %}
+  {% endif %}
+{% endmacro %}
+
+{######## GENERATE CLASS ###########}
+
+{% macro mockClassMethod method %}
+  //MARK: - {{ method.shortName }}
+
+  {% call spyOnMethod method %}
   
   {% if method.isInitializer %}
     override required {{ method.name }} {
@@ -66,39 +83,17 @@
     
     {% call swiftifyMethodName method.selectorName %}CallsCount += 1
     {% call methodReceivedParameters method %}
-    
-    {% if not method.returnTypeName.isVoid %}
-      return {% call swiftifyMethodName method.selectorName %}ReturnValue
-    {% endif %}
+    {% call generateMethodReturn method %}
     }
   {% endif %}
 {% endmacro %}
 
+{######## GENERATE PROTOCOL ###########}
+
 {% macro mockProtocolMethod method %}
   //MARK: - {{ method.shortName }}
 
-  {% if method.throws %}
-    {% call methodThrowableErrorDeclaration method %}
-  {% endif %}
-  
-  {% if method.parameters.count == 1 %}
-    var {% call swiftifyMethodName method.selectorName %}Received{% for param in method.parameters %}{{ param.name|upperFirstLetter }}: {% if param.isClosure %}({% endif %}{{ param.typeName.unwrappedTypeName }}{% if param.isClosure %}){% endif %}?{% endfor %}
-  {% else %}
-    {% if not method.parameters.count == 0 %}
-      var {% call swiftifyMethodName method.selectorName %}ReceivedArguments: [({% for param in method.parameters %}{{ param.name }}: {% if param.typeAttributes.escaping %}{{ param.unwrappedTypeName }}{% else %}{{ param.typeName }}{% endif %}{% if not forloop.last %}, {% endif %}{% endfor %})] = []
-    {% endif %}
-  {% endif %}
-      
-  {% if not method.returnTypeName.isVoid and not method.isInitializer %}
-      var {% call swiftifyMethodName method.selectorName %}ReturnValue: {{ method.returnTypeName }}{% if not method.isOptionalReturnType %}!{% endif %}
-  {% endif %}
-  
-  {% if not method.isInitializer %}
-    var {% call swiftifyMethodName method.selectorName %}CallsCount = 0
-    var {% call swiftifyMethodName method.selectorName %}WasCalled: Bool {
-    return {% call swiftifyMethodName method.selectorName %}CallsCount > 0
-    }
-  {% endif %}
+  {% call spyOnMethod method %}
   
   {% if method.isInitializer %}
     required {{ method.name }} {
@@ -112,10 +107,7 @@
     
     {% call swiftifyMethodName method.selectorName %}CallsCount += 1
     {% call methodReceivedParameters method %}
-    
-    {% if not method.returnTypeName.isVoid %}
-      return {% call swiftifyMethodName method.selectorName %}ReturnValue
-    {% endif %}
+    {% call generateMethodReturn method %}
     }
   {% endif %}
 {% endmacro %}
@@ -155,7 +147,7 @@
   {% endfor %}
 
   {% for method in type.allMethods|!definedInExtension %}
-    {% call mockProtocolMethod method %}
+      {% call mockProtocolMethod method %}
   {% endfor %}
   }
 {% endfor %}

@@ -1,5 +1,9 @@
 language: objective-c
+
 osx_image: xcode9.4
+
+cache:
+  - bundler
 
 branches:
   only:
@@ -7,4 +11,4 @@ branches:
     - develop
 
 script:
-  - xcodebuild clean test -workspace MockGenerator.xcworkspace -scheme MockGenerator -destination "platform=iOS Simulator,name=iPhone 8,OS=11.4" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+  - "bundle exec fastlane run_scan"
