@@ -59,6 +59,18 @@ class MyClass {
 }
 ```
 
+If the protocol or class contains a generic method. Use the `Generic` keyword to generate the code e.g.
+
+> Note that only methods are supported. Generic protocol or classes are in progress.
+
+```swift
+// sourcery: Mock
+protocol MyProtocol {
+    // sourcery: Generic
+    func myMethod<T>(param: T) -> T
+}
+```
+
 After building the project a file called  `AutoMockable.generated.swift` will be generated. Add this file into the project for the test target.
 
 ## Expected Behavior
@@ -138,7 +150,11 @@ func methodWithSingleParam(crvsh: String) -> Bool
 
 // Outputs
 
-var methodWithSingleParamCrvshReceivedCrvsh: String?
+var methodWithSingleParamCrvshReceivedArguments: [String] = []
+var methodWithSingleParamCrvshLastArgumentReceived: String? {
+  return methodWithSingleParamCrvshReceivedArguments.last
+}
+
 var methodWithSingleParamCrvshReturnValue: Bool!
 var methodWithSingleParamCrvshCallsCount = 0
 var methodWithSingleParamCrvshWasCalled: Bool {
@@ -147,7 +163,7 @@ var methodWithSingleParamCrvshWasCalled: Bool {
 
 func methodWithSingleParam(crvsh: String) -> Bool {
   methodWithSingleParamCrvshCallsCount += 1
-  methodWithSingleParamCrvshReceivedCrvsh = crvsh
+  methodWithSingleParamCrvshReceivedArguments.append(crvsh)
   return methodWithSingleParamCrvshReturnValue
 }
 ```
@@ -160,6 +176,10 @@ func methodWithParamsAndReturn(param1: String, param2: String) -> Bool
 // Outputs
 
 var methodWithParamsAndReturnParam1Param2ReceivedArguments: [(param1: String, param2: String)] = []
+var methodWithParamsAndReturnParam1Param2LastArgumentReceived: ((param1: String, param2: String))? {
+  return methodWithParamsAndReturnParam1Param2ReceivedArguments.last
+}
+
 var methodWithParamsAndReturnParam1Param2ReturnValue: Bool!
 var methodWithParamsAndReturnParam1Param2CallsCount = 0
 var methodWithParamsAndReturnParam1Param2WasCalled: Bool {
@@ -182,6 +202,10 @@ func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bo
 
 var methodThrowWithParamsAndReturnParam1Param2ThrowableError: Error?
 var methodThrowWithParamsAndReturnParam1Param2ReceivedArguments: [(param1: String, param2: String)] = []
+var methodThrowWithParamsAndReturnParam1Param2LastArgumentReceived: ((param1: String, param2: String))? {
+  return methodThrowWithParamsAndReturnParam1Param2ReceivedArguments.last
+}
+
 var methodThrowWithParamsAndReturnParam1Param2ReturnValue: Bool!
 var methodThrowWithParamsAndReturnParam1Param2CallsCount = 0
 var methodThrowWithParamsAndReturnParam1Param2WasCalled: Bool {
@@ -202,9 +226,9 @@ func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bo
 
 1. Code generation for classes only apply for methods (Experimental)
 
-2. Generic types are not supported
+2. Generic types are limited to methods only. (Experimental)
 ```swift
-func methodGeneric(type: T) -> String
+func methodGeneric<T>(type: T) -> String
 ```
 
 3. Protocols with function overload are not supported (Coming soon)
