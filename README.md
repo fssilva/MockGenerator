@@ -73,154 +73,79 @@ protocol MyProtocol {
 
 After building the project a file called  `AutoMockable.generated.swift` will be generated. Add this file into the project for the test target.
 
+## Example
+Consider the example of a `Window` object that can use a canvas to draw an item on it.
+
+```swift
+// sourcery: Mock
+protocol Displayable {
+  var name: String { get }
+}
+
+final class Content: Displayable {
+  var name: String {
+    return "Foo"
+  }
+}
+
+// sourcery: Mock
+protocol Drawable {
+  func draw(_ item: Displayable)
+}
+
+final class Canvas: Drawable {
+  func draw(_ item: Displayable) {
+    print(item.name)
+  }
+}
+
+final class Window {
+  let canvas: Drawable
+  let item: Displayable
+
+  init(item: Displayable, canvas: Drawable) {
+    self.item = item
+    self.canvas = canvas
+  }
+
+  func show() {
+    canvas.draw(item)
+  }
+}
+```
+
+This is how we can test the `Window`.
+
+```swift
+class WindowTests: XCTestCase {
+
+  var canvasMock: DrawableMock!
+  var contentMock: DisplayableMock!
+  var sut: Window!
+
+  override func setUp() {
+    canvasMock = DrawableMock()
+    contentMock = DisplayableMock()
+    sut = Window(item: contentMock, canvas: canvasMock)
+  }
+
+  func testWindowsDraw() {
+    // Given
+    contentMock.name = "Bar"
+    expect(self.canvasMock.drawLastArgumentReceived).to(beNil())
+
+    // When
+    sut.show()
+
+    // Then
+    expect(self.canvasMock.drawLastArgumentReceived?.name) == contentMock.name
+  }
+}
+```
+
 ## Expected Behavior
 
-### For Variables
-1. Variable with get only
-
-```swift
-var myVariable: String { get }
-
-// Outputs
-
-var setMyVariableParam: String?
-var myVariable: String = String() {
-  didSet {
-    setMyVariableParam = myVariable
-  }
-}
-```
-
-2. Variable with get and set
-```swift
-var myVariable: String { get set }
-
-// Outputs
-
-var setMyVariableParam: String?
-var myVariable: String = String() {
-  didSet {
-    setMyVariableParam = myVariable
-  }
-}
-```
-
-### For Functions
-
-1. Function returning Void without parameters
-
-```swift
-func emptyMethod()
-
-// Outputs
-
-var emptyMethodCallsCount = 0
-var emptyMethodWasCalled: Bool {
-  return emptyMethodCallsCount > 0
-}
-
-func emptyMethod() {
-  emptyMethodCallsCount += 1
-}
-```
-
-2. Function returning Type without parameters
-
-```swift
-func methodWithReturn() -> String
-
-// Outputs
-
-var methodWithReturnReturnValue: String!
-var methodWithReturnCallsCount = 0
-var methodWithReturnWasCalled: Bool {
-  return methodWithReturnCallsCount > 0
-}
-
-func methodWithReturn() -> String {
-  methodWithReturnCallsCount += 1
-  return methodWithReturnReturnValue
-}
-```
-
-3. Function returning Type with one parameter
-
-```swift
-func methodWithSingleParam(crvsh: String) -> Bool
-
-// Outputs
-
-var methodWithSingleParamCrvshReceivedArguments: [String] = []
-var methodWithSingleParamCrvshLastArgumentReceived: String? {
-  return methodWithSingleParamCrvshReceivedArguments.last
-}
-
-var methodWithSingleParamCrvshReturnValue: Bool!
-var methodWithSingleParamCrvshCallsCount = 0
-var methodWithSingleParamCrvshWasCalled: Bool {
-  return methodWithSingleParamCrvshCallsCount > 0
-}
-
-func methodWithSingleParam(crvsh: String) -> Bool {
-  methodWithSingleParamCrvshCallsCount += 1
-  methodWithSingleParamCrvshReceivedArguments.append(crvsh)
-  return methodWithSingleParamCrvshReturnValue
-}
-```
-
-4. Function returning Type with many parameters
-
-```swift
-func methodWithParamsAndReturn(param1: String, param2: String) -> Bool
-
-// Outputs
-
-var methodWithParamsAndReturnParam1Param2ReceivedArguments: [(param1: String, param2: String)] = []
-var methodWithParamsAndReturnParam1Param2LastArgumentReceived: ((param1: String, param2: String))? {
-  return methodWithParamsAndReturnParam1Param2ReceivedArguments.last
-}
-
-var methodWithParamsAndReturnParam1Param2ReturnValue: Bool!
-var methodWithParamsAndReturnParam1Param2CallsCount = 0
-var methodWithParamsAndReturnParam1Param2WasCalled: Bool {
-  return methodWithParamsAndReturnParam1Param2CallsCount > 0
-}
-
-func methodWithParamsAndReturn(param1: String, param2: String) -> Bool {
-  methodWithParamsAndReturnParam1Param2CallsCount += 1
-  methodWithParamsAndReturnParam1Param2ReceivedArguments.append((param1: param1, param2: param2))
-  return methodWithParamsAndReturnParam1Param2ReturnValue
-}
-```
-
-5. Function that can throw with return Type and many parameters 
-
-```swift
-func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bool
-
-// Outputs
-
-var methodThrowWithParamsAndReturnParam1Param2ThrowableError: Error?
-var methodThrowWithParamsAndReturnParam1Param2ReceivedArguments: [(param1: String, param2: String)] = []
-var methodThrowWithParamsAndReturnParam1Param2LastArgumentReceived: ((param1: String, param2: String))? {
-  return methodThrowWithParamsAndReturnParam1Param2ReceivedArguments.last
-}
-
-var methodThrowWithParamsAndReturnParam1Param2ReturnValue: Bool!
-var methodThrowWithParamsAndReturnParam1Param2CallsCount = 0
-var methodThrowWithParamsAndReturnParam1Param2WasCalled: Bool {
-  return methodThrowWithParamsAndReturnParam1Param2CallsCount > 0
-}
-
-func methodThrowWithParamsAndReturn(param1: String, param2: String) throws -> Bool {
-  if let error = methodThrowWithParamsAndReturnParam1Param2ThrowableError {
-    throw error
-  }
-  methodThrowWithParamsAndReturnParam1Param2CallsCount += 1
-  methodThrowWithParamsAndReturnParam1Param2ReceivedArguments.append((param1: param1, param2: param2))
-  return methodThrowWithParamsAndReturnParam1Param2ReturnValue
-}
-```
+If you want to know more details about the different generated types, check the [EXPECTED](EXPECTED.md) file.
 
 ## Limitations
 
