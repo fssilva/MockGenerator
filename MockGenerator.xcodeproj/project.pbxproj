@@ -21,6 +21,7 @@
 		8B58E6BE2100E967002CA78C /* AutoMockable.expected in Resources */ = {isa = PBXBuildFile; fileRef = 8B58E6B82100E35D002CA78C /* AutoMockable.expected */; };
 		8B58E6BF2100EB9A002CA78C /* AutoMockable.generated.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
 		8B58E6C12100EC46002CA78C /* AutoMockable.generated.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B58E6BB2100E8B2002CA78C /* AutoMockable.generated.swift */; };
+		B2AC2C1379F692E54DC87B4E /* Pods_MockGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B41ED172101DEBA0014F1A3 /* Pods_MockGeneratorTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F6CDB998AB55A953A39D03 /* Pods_MockGeneratorTests.framework in Frameworks */,
+				B2AC2C1379F692E54DC87B4E /* Pods_MockGeneratorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +240,7 @@
 				TargetAttributes = {
 					8B1999D820F8D5BE00B2CFC0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 					8B1999EC20F8D5C000B2CFC0 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -317,7 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \".sourcery.yml\"";
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \".sourcery.yml\"\n";
 		};
 		8B199A0720FC874500B2CFC0 /* Sourcery Code Format */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -345,7 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \"Tests/.sourcery.yml\"\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/Generated/AutoMockable.generated.swift\"";
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config \"Tests/.sourcery.yml\"\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" --indent 2 \"${SRCROOT}/Tests/Generated/AutoMockable.generated.swift\"\n";
 		};
 		950154A39E979F69F2D0DA02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -564,7 +567,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -583,7 +586,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

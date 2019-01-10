@@ -116,7 +116,7 @@ class InitializationProtocolMock: InitializationProtocol {
   // MARK: - init
 
   var initIntParameterStringParameterOptionalParameterReceivedArguments: [(intParameter: Int, stringParameter: String, optionalParameter: String?)] = []
-  var initIntParameterStringParameterOptionalParameterLastArgumentReceived: ((intParameter: Int, stringParameter: String, optionalParameter: String?))? {
+  var initIntParameterStringParameterOptionalParameterLastArgumentReceived: (intParameter: Int, stringParameter: String, optionalParameter: String?)? {
     return initIntParameterStringParameterOptionalParameterReceivedArguments.last
   }
 
@@ -178,7 +178,7 @@ class SameShortMethodNamesProtocolMock: SameShortMethodNamesProtocol {
   // MARK: - start
 
   var startCarOfReceivedArguments: [(car: String, model: String)] = []
-  var startCarOfLastArgumentReceived: ((car: String, model: String))? {
+  var startCarOfLastArgumentReceived: (car: String, model: String)? {
     return startCarOfReceivedArguments.last
   }
 
@@ -195,7 +195,7 @@ class SameShortMethodNamesProtocolMock: SameShortMethodNamesProtocol {
   // MARK: - start
 
   var startPlaneOfReceivedArguments: [(plane: String, model: String)] = []
-  var startPlaneOfLastArgumentReceived: ((plane: String, model: String))? {
+  var startPlaneOfLastArgumentReceived: (plane: String, model: String)? {
     return startPlaneOfReceivedArguments.last
   }
 
@@ -314,7 +314,7 @@ class TestMock: Test {
   // MARK: - methodWithMultipleParams
 
   var methodWithMultipleParamsNameLastNameReceivedArguments: [(name: String, lastName: String)] = []
-  var methodWithMultipleParamsNameLastNameLastArgumentReceived: ((name: String, lastName: String))? {
+  var methodWithMultipleParamsNameLastNameLastArgumentReceived: (name: String, lastName: String)? {
     return methodWithMultipleParamsNameLastNameReceivedArguments.last
   }
 
