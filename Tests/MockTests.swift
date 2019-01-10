@@ -31,6 +31,7 @@ class MockTests: XCTestCase {
     let generatedFileFilteredLines = generatedFileLines.filter(emptyLinesFilter).filter(commentLinesFilter)
     let expectedFileLines = expectedFileString.components(separatedBy: .newlines)
     let expectedFileFilteredLines = expectedFileLines.filter(emptyLinesFilter).filter(commentLinesFilter)
+
     expect(generatedFileFilteredLines).to(equal(expectedFileFilteredLines))
   }
 
