@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.15.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.16.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 // swiftlint:disable all
@@ -26,7 +26,7 @@ class BasicProtocolMock: BasicProtocol {
   // MARK: - save
 
   var saveConfigurationReceivedArguments: [String] = []
-  var saveConfigurationLastArgumentReceived: String? {
+  var saveConfigurationLastArgumentReceived: (String)? {
     return saveConfigurationReceivedArguments.last
   }
 
@@ -68,7 +68,7 @@ class CurrencyPresenterMock: CurrencyPresenter {
   // MARK: - showSourceCurrency
 
   var showSourceCurrencyReceivedArguments: [String] = []
-  var showSourceCurrencyLastArgumentReceived: String? {
+  var showSourceCurrencyLastArgumentReceived: (String)? {
     return showSourceCurrencyReceivedArguments.last
   }
 
@@ -96,7 +96,7 @@ class ExtendableProtocolMock: ExtendableProtocol {
   // MARK: - report
 
   var reportMessageReceivedArguments: [String] = []
-  var reportMessageLastArgumentReceived: String? {
+  var reportMessageLastArgumentReceived: (String)? {
     return reportMessageReceivedArguments.last
   }
 
@@ -154,7 +154,7 @@ class ReservedWordsProtocolMock: ReservedWordsProtocol {
   // MARK: - `continue`
 
   var continueWithReceivedArguments: [String] = []
-  var continueWithLastArgumentReceived: String? {
+  var continueWithLastArgumentReceived: (String)? {
     return continueWithReceivedArguments.last
   }
 
