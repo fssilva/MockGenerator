@@ -1,8 +1,8 @@
 PODS:
-  - Nimble (7.3.1)
-  - Sourcery (0.15.0)
-  - SwiftFormat/CLI (0.37.2)
-  - SwiftLint (0.29.3)
+  - Nimble (8.0.1)
+  - Sourcery (0.16.0)
+  - SwiftFormat/CLI (0.40.7)
+  - SwiftLint (0.31.0)
 
 DEPENDENCIES:
   - Nimble
@@ -18,10 +18,10 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
-  SwiftFormat: abbfb26dde4c6d683923cde153c88e10da9d7881
-  SwiftLint: bfa7ca7b4d170cfaf0d236ca3ffd969e88a2f002
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
+  Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
+  SwiftFormat: 93264523d31b70e5bc109c00ceeda3ae613a59d1
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
 PODFILE CHECKSUM: 5d7afbe5ececcbd29a3db26c40ec6de599fb4e27
 
