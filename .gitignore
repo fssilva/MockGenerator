@@ -69,3 +69,4 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 cobertura.xml
+AutoMockable.generated.swift
