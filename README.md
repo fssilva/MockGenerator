@@ -1,6 +1,6 @@
 # MockGenerator 
 
-iOS Mock Generator provides the ability to easily generate mocks for swift 4.2 protocols and classes. It removes the boilerplate coding required to use mocks in your app.
+iOS Mock Generator provides the ability to easily generate mocks for swift 5 protocols and classes. It removes the boilerplate coding required to use mocks in your app.
 
 [![Build Status](https://travis-ci.org/fssilva/MockGenerator.svg?branch=develop)](https://travis-ci.org/fssilva/MockGenerator)
 
@@ -15,7 +15,7 @@ pod 'SwiftFormat/CLI'
 ```
 
 ### Resources
-1. Copy the following file/folder into your project's root folder
+1. Copy the following file/folder into your project's root folder (For swift 4.2 or bellow use `swift-4.2` branch)
 
 
 * `.sourcery.yml` - Sourcery configuration file

@@ -240,10 +240,11 @@
 				TargetAttributes = {
 					8B1999D820F8D5BE00B2CFC0 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					8B1999EC20F8D5C000B2CFC0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 8B1999D820F8D5BE00B2CFC0;
 					};
 				};
@@ -567,7 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -586,7 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -607,7 +608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGeneratorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MockGenerator.app/MockGenerator";
 			};
@@ -629,7 +630,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fsousasilva.MockGeneratorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MockGenerator.app/MockGenerator";
 			};
