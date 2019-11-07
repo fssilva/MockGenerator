@@ -62,6 +62,8 @@ That depends. There are four ways you can use SwiftFormat:
 Command-line tool
 -------------------
 
+**NOTE:** if you are using any of the following methods to install SwiftFormat on macOS 10.14.3 or earlier and are experiencing a crash on launch, you may need to install the [Swift 5 Runtime Support for Command Line Tools](https://support.apple.com/kb/DL1998). See [known issues](#known-issues) for details.
+
 **Installation:**
 
 You can install the `swiftformat` command-line tool on macOS using [Homebrew](http://brew.sh/). Assuming you already have Homebrew installed, just type:
@@ -69,6 +71,12 @@ You can install the `swiftformat` command-line tool on macOS using [Homebrew](ht
 ```bash
 $ brew update
 $ brew install swiftformat
+```
+
+To update to the latest version once installed:
+
+```bash
+$ brew upgrade swiftformat
 ```
 
 Alternatively, you can install the tool on macOS or Linux by using [Mint](https://github.com/yonaskolb/Mint) as follows:
@@ -139,7 +147,7 @@ To use it safely, do the following:
 
     If you used `--inferoptions` to generate a suggested set of options in step 3, you should copy and paste them into the command, either before or after the path(s) to your source files.
     
-    If you have created a [config file](#config-file), you can specify its path using `--config "/path/to/your/config-file/". Alternatively, if you name the file `.swiftformat` and place it inside the project you are formatting, it will be picked up automatically.
+    If you have created a [config file](#config-file), you can specify its path using `--config "/path/to/your/config-file/"`. Alternatively, if you name the file `.swiftformat` and place it inside the project you are formatting, it will be picked up automatically.
 
 5. Press enter to begin formatting. Once the formatting is complete, use your source control system to check the changes, and verify that no undesirable changes have been introduced. If they have, revert the changes, tweak the options and try again.
 
@@ -599,6 +607,8 @@ Q. I don't want to be surprised by new rules added when I upgrade SwiftFormat. H
 
 Known issues
 ---------------
+
+* When running a version of SwiftFormat built using Xcode 10.2 on macOS 10.14.3 or earlier, you may experience a crash with the error "dyld: Library not loaded: @rpath/libswiftCore.dylib". To fix this, you need to install the [Swift 5 Runtime Support for Command Line Tools](https://support.apple.com/kb/DL1998). These tools are included by default in macOS 10.14.4 and later.
 
 * When using the `--self remove` option, the `redundantSelf` rule will remove references to `self` in autoclosure arguments, which may change the meaning of the code, or cause it not to compile. To work around this issue, use the `--selfrequired` option to provide a comma-delimited list of methods to be excluded from the rule. The `expect()` function from the popular [Nimble](https://github.com/Quick/Nimble) unit testing framework is already excluded by default. If you are using the `--self insert` option then this is not an issue.
 

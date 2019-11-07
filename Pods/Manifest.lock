@@ -1,8 +1,8 @@
 PODS:
-  - Nimble (8.0.1)
-  - Sourcery (0.16.0)
-  - SwiftFormat/CLI (0.40.7)
-  - SwiftLint (0.31.0)
+  - Nimble (8.0.4)
+  - Sourcery (0.17.0)
+  - SwiftFormat/CLI (0.40.14)
+  - SwiftLint (0.36.0)
 
 DEPENDENCIES:
   - Nimble
@@ -11,18 +11,18 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Nimble
     - Sourcery
     - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
-  Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
-  SwiftFormat: 93264523d31b70e5bc109c00ceeda3ae613a59d1
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  Sourcery: 3ed61be7c8a1218fce349266139379dba477efe0
+  SwiftFormat: 21c9c3c748d5fcece493d8610eee23df15393458
+  SwiftLint: fc9859e4e1752340664851f667bb1898b9c90114
 
 PODFILE CHECKSUM: 5d7afbe5ececcbd29a3db26c40ec6de599fb4e27
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
