@@ -11,6 +11,6 @@ jobs:
     - name: Create Pr Build
       uses: Khan/pull-request-comment-trigger@1.0.0
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_VALUE }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         reaction: "rocket"
         trigger: "!build"
