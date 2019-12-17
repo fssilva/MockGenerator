@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Pull Request Comment Trigger
+      uses: Khan/pull-request-comment-trigger@1.0.0
+      with:
+        reaction: "rocket"
+        trigger: "!build"
