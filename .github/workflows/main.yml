@@ -1,4 +1,4 @@
-name: CI
+name: Deploy-Bot
 
 on: [push]
 
@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Pull Request Comment Trigger
+    - name: Create Pr Build
       uses: Khan/pull-request-comment-trigger@1.0.0
       with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_VALUE }}
         reaction: "rocket"
         trigger: "!build"
